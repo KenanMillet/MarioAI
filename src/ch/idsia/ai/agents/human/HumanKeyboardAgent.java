@@ -62,23 +62,20 @@ public class HumanKeyboardAgent extends KeyAdapter implements Agent
     private void toggleKey(int keyCode, boolean isPressed)
     {
         switch (keyCode) {
-            case KeyEvent.VK_A:
+            case KeyEvent.VK_LEFT:
                 Action[Mario.KEY_LEFT] = isPressed;
                 break;
-            case KeyEvent.VK_D:
+            case KeyEvent.VK_RIGHT:
                 Action[Mario.KEY_RIGHT] = isPressed;
                 break;
-            case KeyEvent.VK_S:
+            case KeyEvent.VK_DOWN:
                 Action[Mario.KEY_DOWN] = isPressed;
                 break;
 
-            case KeyEvent.VK_SPACE:
+            case KeyEvent.VK_S:
                 Action[Mario.KEY_JUMP] = isPressed;
                 break;
-            case KeyEvent.VK_ENTER:
-                Action[Mario.KEY_SPEED] = isPressed;
-                break;
-            case KeyEvent.VK_SHIFT:
+            case KeyEvent.VK_A:
                 Action[Mario.KEY_SPEED] = isPressed;
                 break;
         }

@@ -42,8 +42,8 @@ public class ForwardAgent extends BasicAIAgent implements Agent
                 if  (levelScene[y][x] != 0)
                     f = false;
             }
-            if (f && levelScene[12][11] != 0)
-                return true;
+//            if (f && levelScene[12][11] != 0)
+//                return true;
         }
         return false;
     }
@@ -112,6 +112,10 @@ public class ForwardAgent extends BasicAIAgent implements Agent
         byte[][] levelScene = observation.getCompleteObservation(/*1, 0*/);
         float[] marioPos = observation.getMarioFloatPos();
         float[] enemiesPos = observation.getEnemiesFloatPos();
+        for(int i = 0; i < levelScene.length; ++i)
+        {
+
+        }
 //        String encodedState = observation.getBitmapLevelObservation();
 //        byte[][] levelSceneFromBitmap = decode(encodedState);
 //        encodedState = observation.getBitmapEnemiesObservation();

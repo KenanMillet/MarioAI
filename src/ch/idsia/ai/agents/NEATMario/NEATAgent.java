@@ -1,9 +1,8 @@
-package ch.idsia.ai.agents.ai.NEATMario;
+package ch.idsia.ai.agents.NEATMario;
 
 import ch.idsia.ai.agents.Agent;
+import ch.idsia.mario.engine.sprites.Mario;
 import ch.idsia.mario.environments.Environment;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.function.Function;
@@ -12,6 +11,10 @@ import java.util.stream.Collectors;
 
 import static java.lang.Math.ceil;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+
 /**
  * Created by Owner on 12/8/2016.
  */
@@ -19,12 +22,23 @@ public class NEATAgent implements Agent{
 
     protected boolean action[] = new boolean[Environment.numberOfButtons];
     protected String name = "NEAT \"Good 'nuff\" Agent";
-    protected Classifier labeler;
-    protected Population population;
+    protected Classifier labeler = new Classifier();
+    protected Population population = new Population(m -> 1.0);
     protected Population.Species currentSpecies;
 
+
+
     public class Population {
+
         public class Species {
+            public Species() {
+
+            }
+
+            public Species(Map.Entry<Dendrite, Axon>... members) {
+                for(int i = 0; i < members.length; ++i) addMember(members[i].getKey().loc.x, members[i].getKey().loc.y, members[i].getKey().label, members[i].getValue().action);
+            }
+
             public class Dendrite {
                 public class Coord {
                     public Coord(int x, int y) {
@@ -52,18 +66,25 @@ public class NEATAgent implements Agent{
             public void addMember(int x, int y, int label, int action) {
                 Set<Axon> set = new HashSet<>();
                 set.add(new Axon(action));
-                species.merge(new Dendrite(x, y, label), set, (a, b) -> {a.addAll(b); return a;});
+                Dendrite d = new Dendrite(x, y, label);
+                species.merge(d, set, (a, b) -> {a.addAll(b); return a;});
             }
             public boolean removeMember(Dendrite d, Axon a) {
                 return species.get(d).remove(a);
             }
             public Set<Integer> getResponse(int x, int y, int label) {
+                Set<Integer> result;
                 Set<Axon> a = species.get(new Dendrite(x, y, label));
-                Set<Integer> result = a.stream().map(axon -> axon.action).collect(Collectors.toSet());
+                if(a != null) result = a.stream().map(axon -> axon.action).collect(Collectors.toSet());
+                else result = new HashSet<>();
                 return result;
             }
 
-            private HashMap<Dendrite, Set<Axon>> species;
+            private HashMap<Dendrite, Set<Axon>> species = new HashMap<>();
+        }
+
+        public Species make_Species() {
+            return new Species();
         }
 
         Population(Function<Species, Double> fitnessFunction, Species... species) {
@@ -274,6 +295,13 @@ public class NEATAgent implements Agent{
     public NEATAgent(String s)
     {
         setName(s);
+        currentSpecies = population.make_Species();
+        currentSpecies.addMember(0, 10, 1, Mario.KEY_JUMP);
+        currentSpecies.addMember(1, 10, 1, Mario.KEY_JUMP);
+        currentSpecies.addMember(2, 10, 1, Mario.KEY_JUMP);
+        currentSpecies.addMember(3, 10, 1, Mario.KEY_JUMP);
+        population.addSpecies(currentSpecies);
+        labeler.addClassification(aByte -> aByte == -10);
     }
 
     public void reset() {
@@ -281,6 +309,7 @@ public class NEATAgent implements Agent{
     }
 
     public boolean[] getAction(Environment observation) {
+        reset();
         //Terrain Info Generalization level 1, Enemy Info Generalization level 0
         byte data[][] = observation.getMergedObservationZ(1, 0);
         for(int y = 0; y < data.length; ++y)
@@ -288,9 +317,25 @@ public class NEATAgent implements Agent{
             for(int x = 0; x < data[y].length; ++x)
             {
                 Set<Integer> responses = currentSpecies.getResponse(x, y, labeler.classify(data[y][x]));
-                for(Integer r : responses) action[r] = true;
+
+//                System.out.printf("%d ", data[y][x]);
+                System.out.printf("(%d, %d):\t%d\t", x, y, labeler.classify(data[y][x]));
+
+                if(responses != null) {
+                    for (Integer r : responses) {
+                        action[r] = true;
+                    }
+                }
             }
+            System.out.println();
         }
+        System.out.println();
+        System.out.println();
+
+        action[Mario.KEY_RIGHT] = true;
+//        action[Mario.KEY_JUMP] = true;
+        System.out.println();
+        System.out.println();
         return action;
     }
 

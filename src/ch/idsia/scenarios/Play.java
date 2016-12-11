@@ -5,8 +5,10 @@ import ch.idsia.ai.agents.AgentsPool;
 import ch.idsia.ai.agents.human.HumanKeyboardAgent;
 import ch.idsia.ai.tasks.ProgressTask;
 import ch.idsia.ai.tasks.Task;
+import ch.idsia.mario.environments.Environment;
 import ch.idsia.tools.CmdLineOptions;
 import ch.idsia.tools.EvaluationOptions;
+import ch.idsia.mario.environments.Environment;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,6 +35,11 @@ public class Play {
         options.setLevelDifficulty(3);
         task.setOptions(options);
 
+        
+        Environment observation = null;
+
+        System.out.println (Environment.numberOfObservationElements);
+        //System.out.println (observation.getCompleteObservation(/*1, 0*/));
         System.out.println ("Score: " + task.evaluate (controller)[0]);
     }
 }

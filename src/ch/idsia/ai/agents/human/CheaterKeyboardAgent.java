@@ -59,21 +59,21 @@ public class CheaterKeyboardAgent extends KeyAdapter implements Agent {
     {
         switch (keyCode) {
             //Cheats;
-            case KeyEvent.VK_1:
+            case KeyEvent.VK_D:
                 if (isPressed)
                     GlobalOptions.gameViewerTick();
                 break;
-            case KeyEvent.VK_2:
+            case KeyEvent.VK_V:
                 if (isPressed)
                     GlobalOptions.VisualizationOn = !GlobalOptions.VisualizationOn;
                 break;                        
-            case KeyEvent.VK_3:
+            case KeyEvent.VK_U:
                 Action[Mario.KEY_LIFE_UP] = isPressed;
                 break;
-            case KeyEvent.VK_4:
+            case KeyEvent.VK_W:
                 Action[Mario.KEY_WIN] = isPressed;
                 break;
-            case KeyEvent.VK_5:
+            case KeyEvent.VK_P:
                 if (isPressed)
                 {
                     LOGGER.println("Pause On/Off", LOGGER.VERBOSE_MODE.INFO);
@@ -81,35 +81,35 @@ public class CheaterKeyboardAgent extends KeyAdapter implements Agent {
                     Action[Mario.KEY_PAUSE] = GlobalOptions.pauseWorld;
                 }
                 break;
-            case KeyEvent.VK_6:
+            case KeyEvent.VK_L:
                 if (isPressed)
                 {
                     LOGGER.println("Labels On/Off", LOGGER.VERBOSE_MODE.INFO);
                     GlobalOptions.Labels = !GlobalOptions.Labels;
                 }
                 break;
-            case KeyEvent.VK_7:
+            case KeyEvent.VK_C:
                 if (isPressed)
                 {
                     LOGGER.println("Center On/Off", LOGGER.VERBOSE_MODE.ALL);
                     GlobalOptions.MarioAlwaysInCenter = !GlobalOptions.MarioAlwaysInCenter;
                 }
                 break;
-            case KeyEvent.VK_9:
+            case 61:
                 if (isPressed)
                 {
                     LOGGER.println("FPS increase by 1. Current FPS is " + ++GlobalOptions.FPS, LOGGER.VERBOSE_MODE.INFO);
                     GlobalOptions.AdjustMarioComponentFPS();
                 }
                 break;
-            case KeyEvent.VK_8:
+            case 45:
                 if (isPressed)
                 {
                     LOGGER.println("FPS decrease . Current FPS is " + --GlobalOptions.FPS, LOGGER.VERBOSE_MODE.INFO);
                     GlobalOptions.AdjustMarioComponentFPS();
                 }
                 break;
-            case KeyEvent.VK_0:  // chr(56) = 8
+            case 56:  // chr(56) = 8
                 if (isPressed)
                 {
                     int temp = prevFPS;

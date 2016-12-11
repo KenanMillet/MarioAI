@@ -1,20 +1,27 @@
 package ch.idsia.scenarios;
 
-import ch.idsia.ai.agents.ai.*;
 import ch.idsia.ai.agents.Agent;
 import ch.idsia.ai.agents.AgentsPool;
-//import ch.idsia.ai.agents.icegic.robin.AStarAgent;
-//import ch.idsia.ai.agents.icegic.peterlawford.SlowAgent;
-import ch.idsia.ai.agents.ai.NEATMario.NEATAgent;
+import ch.idsia.ai.agents.ai.ForwardAgent;
+import ch.idsia.ai.agents.ai.TimingAgent;
+import ch.idsia.ai.agents.human.HumanKeyboardAgent;
+import ch.idsia.ai.tasks.ProgressTask;
+import ch.idsia.ai.tasks.Task;
+import ch.idsia.mario.environments.Environment;
 import ch.idsia.tools.CmdLineOptions;
 import ch.idsia.tools.EvaluationInfo;
 import ch.idsia.tools.EvaluationOptions;
 import ch.idsia.tools.Evaluator;
 import ch.idsia.utils.StatisticalSummary;
+import ch.idsia.ai.agents.NEATMario.NEATAgent;
 
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
-import competition.cig.sergeykarakovskiy.SergeyKarakovskiy_JumpingAgent;
+//import ch.idsia.ai.agents.icegic.robin.AStarAgent;
+//import ch.idsia.ai.agents.icegic.peterlawford.SlowAgent;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,7 +40,11 @@ public class MainRun
     private static int timeLeftSum = 0;
     private static int marioModeSum = 0;
 
+
+
+
     public static void main(String[] args) {
+        Environment observation = null;
         CmdLineOptions cmdLineOptions = new CmdLineOptions(args);
         EvaluationOptions evaluationOptions = cmdLineOptions;  // if none options mentioned, all defalults are used.
         createAgentsPool();
@@ -72,11 +83,19 @@ public class MainRun
 //            AgentsPool.addAgent(new AIwesome());
 //            AgentsPool.addAgent(new TutchekAgent());
         //    AgentsPool.addAgent(new SlowAgent());
-//            AgentsPool.addAgent(new AStarAgent());
+        //    AgentsPool.addAgent(new AStarAgent());
 //            AgentsPool.addAgent(new RjAgent());
 //            AgentsPool.addAgent(new SergeyKarakovskiy_JumpingAgent());
-//            AgentsPool.addAgent(new ScaredSpeedyAgent());
-            //AgentsPool.addAgent(new NEATAgent("gg"));
+
+
+            NEATAgent n = new NEATAgent("gg");
+            AgentsPool.addAgent(n);
+
+//------------------------------------------------------------------------------//
+
+//            Agent controller = new HumanKeyboardAgent();
+//            AgentsPool.addAgent(controller);
+
         }
     }
 

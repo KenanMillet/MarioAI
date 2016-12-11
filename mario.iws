@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="168538c4-b51b-46f0-8228-c7e8ca2c7035" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/NEATMario" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/NEATMario/NEATAgent.java" />
+    <list default="true" readonly="true" id="7e4e75b3-15e9-4b9a-84c2-02e21c51fe48" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/idsia/ai/agents/NEATMario" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/idsia/ai/logic" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/idsia/ai/agents/NEATMario/NEATAgent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/idsia/ai/logic/AgentProgram.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ForwardAgent.java" afterPath="$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ForwardAgent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/idsia/scenarios/MainRun.java" afterPath="$PROJECT_DIR$/src/ch/idsia/scenarios/MainRun.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/idsia/ai/agents/human/HumanKeyboardAgent.java" afterPath="$PROJECT_DIR$/src/ch/idsia/ai/agents/human/HumanKeyboardAgent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/idsia/ai/agents/human/CheaterKeyboardAgent.java" afterPath="$PROJECT_DIR$/src/ch/idsia/ai/agents/human/CheaterKeyboardAgent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/idsia/scenarios/Play.java" afterPath="$PROJECT_DIR$/src/ch/idsia/scenarios/Play.java" />
     </list>
     <ignored path="mario.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,63 +65,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NEATAgent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/NEATMario/NEATAgent.java">
+      <file leaf-file-name="Play.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/Play.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="305" column="16" selection-start-line="305" selection-start-column="16" selection-end-line="305" selection-end-column="16" />
+            <state relative-caret-position="287">
+              <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MarioComponent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/MarioComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="341" column="51" selection-start-line="341" selection-start-column="51" selection-end-line="341" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="class#Coord#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#Coord#0;class#Coord#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#Dendrite#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="class#Axon#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#addMember#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#getResponse#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#setFitnessFunction#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#updateFitness#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#updateFitness#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#updateFitness#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#addSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#removeSpecies#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#removeSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#removeBest#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#removeBest#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#removeBest#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#removeWorst#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#removeWorst#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#removeWorst#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#replaceSpecies#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#replaceSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#getFitness#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#atRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#atLeastRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#atMostRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#getRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#getRank#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#inTopPercentile#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#inBottomPercentile#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#getTopPercentile#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="method#getBottomPercentile#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-                <element signature="e#10669#10670#0" expanded="true" />
-                <element signature="e#10695#10696#0" expanded="true" />
-                <element signature="e#11511#11512#0" expanded="true" />
-                <element signature="e#11543#11544#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainRun.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainRun.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/MainRun.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            <state relative-caret-position="111">
+              <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NEATAgent.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/NEATMario/NEATAgent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#Species#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
+                <element signature="method#Species#1;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
+                <element signature="class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
+                <element signature="class#Axon#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
+                <element signature="e#2822#2823#0" expanded="true" />
+                <element signature="e#2866#2867#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Mario.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="677" column="10" selection-start-line="677" selection-start-column="10" selection-end-line="677" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -127,8 +130,50 @@
       <file leaf-file-name="Environment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/environments/Environment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+            <state relative-caret-position="0">
+              <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HumanKeyboardAgent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/human/HumanKeyboardAgent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="68" column="38" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KeyEvent.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/java/awt/event/KeyEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-324">
+              <caret line="953" column="16" selection-start-line="953" selection-start-column="16" selection-end-line="953" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputEvent.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/java/awt/event/InputEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgentProgram.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/logic/AgentProgram.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -140,6 +185,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -156,21 +202,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ch/idsia/mario/environments/Environment.java" />
-        <option value="$PROJECT_DIR$/src/ch/idsia/ai/agents/human/CheaterKeyboardAgent.java" />
-        <option value="$PROJECT_DIR$/src/ch/idsia/ai/agents/human/HumanKeyboardAgent.java" />
-        <option value="$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Enemy.java" />
-        <option value="$PROJECT_DIR$/src/ch/idsia/mario/engine/LevelScene.java" />
-        <option value="$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/NEATMario/NEATAgent.java" />
+        <option value="$PROJECT_DIR$/src/ch/idsia/scenarios/Play.java" />
+        <option value="$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Mario.java" />
+        <option value="$PROJECT_DIR$/src/ch/idsia/ai/agents/Action.java" />
+        <option value="$PROJECT_DIR$/src/ch/idsia/ai/agents/Percept.java" />
+        <option value="$PROJECT_DIR$/src/ch/idsia/ai/agents/good_enof/AbstractAgent.java" />
+        <option value="$PROJECT_DIR$/src/ch/idsia/ai/logic/AgentProgram.java" />
+        <option value="$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ForwardAgent.java" />
+        <option value="$PROJECT_DIR$/src/ch/idsia/tools/ToolsConfigurator.java" />
         <option value="$PROJECT_DIR$/src/ch/idsia/scenarios/MainRun.java" />
+        <option value="$PROJECT_DIR$/src/ch/idsia/ai/agents/NEATMario/NEATAgent.java" />
       </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ModuleEditorState">
@@ -444,9 +486,10 @@
     </subPane>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="1" />
     <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="738" />
+    <option name="width" value="1279" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -479,6 +522,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -501,71 +545,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="wox.serial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="competition" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="ch.idsia" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ch.idsia" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -602,10 +582,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simulation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -715,7 +691,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="agents" />
+              <option name="myItemId" value="logic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -740,10 +716,6 @@
               <option name="myItemId" value="agents" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ai" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -764,10 +736,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="agents" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ai" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -775,11 +743,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mario" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch.idsia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ai" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agents" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="human" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -809,7 +802,7 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="117" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="options.searchVisible" value="true" />
@@ -821,7 +814,7 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="808" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="82" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/CS4613/marioai" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -830,7 +823,7 @@
       <recent name="ch.mario" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Play AI Controlled">
+  <component name="RunManager" selected="Application.BasicAI">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="DEPLOY" value="true" />
@@ -1070,14 +1063,14 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="false" name="Play AI Controlled" type="Application" factoryName="Application">
+    <configuration default="false" name="BasicAI" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="ch.idsia.scenarios.MainRun" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -1087,14 +1080,14 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="Play Manually" type="Application" factoryName="Application">
+    <configuration default="false" name="UserControlled" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="ch.idsia.scenarios.Play" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -1103,8 +1096,8 @@
       <method />
     </configuration>
     <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Application.Play AI Controlled" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Play Manually" />
+      <item index="0" class="java.lang.String" itemvalue="Application.BasicAI" />
+      <item index="1" class="java.lang.String" itemvalue="Application.UserControlled" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1143,11 +1136,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="168538c4-b51b-46f0-8228-c7e8ca2c7035" name="Default" comment="" />
-      <created>1481151315748</created>
+      <changelist id="7e4e75b3-15e9-4b9a-84c2-02e21c51fe48" name="Default" comment="" />
+      <created>1480553223047</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1481151315748</updated>
+      <updated>1480553223047</updated>
     </task>
     <servers />
   </component>
@@ -1172,39 +1165,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="738" extended-state="0" />
+    <frame x="1" y="23" width="1279" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32286996" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32643312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32356256" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.323217" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32356256" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36953124" sideWeight="0.66854566" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24784988" sideWeight="0.66854566" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.323217" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297587" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297587" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288948" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29617834" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3288948" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1231,7 +1224,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1240,262 +1233,42 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/NEATMario/NEATAgent.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/tools/LOGGER.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="class#Coord#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#Coord#0;class#Coord#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#Dendrite#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="class#Axon#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#addMember#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getResponse#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#setFitnessFunction#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#updateFitness#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#updateFitness#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#updateFitness#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#addSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeSpecies#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeBest#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeBest#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeBest#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeWorst#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeWorst#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeWorst#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#replaceSpecies#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#replaceSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getFitness#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#atRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#atLeastRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#atMostRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getRank#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#inTopPercentile#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#inBottomPercentile#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getTopPercentile#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getBottomPercentile#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="e#10669#10670#0" expanded="true" />
-            <element signature="e#10695#10696#0" expanded="true" />
-            <element signature="e#11511#11512#0" expanded="true" />
-            <element signature="e#11543#11544#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/Agent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/environments/Environment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/MarioComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5848">
-          <caret line="375" column="53" selection-start-line="375" selection-start-column="53" selection-end-line="375" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Enemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/LevelScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3604">
-          <caret line="212" column="47" selection-start-line="212" selection-start-column="47" selection-end-line="212" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ForwardJumpingAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Mario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1193#1194#0" expanded="false" />
-            <element signature="e#1252#1253#0" expanded="false" />
-            <element signature="e#18985#18986#0" expanded="false" />
-            <element signature="e#19008#19009#0" expanded="false" />
-            <element signature="e#19157#19158#0" expanded="false" />
-            <element signature="e#19186#19187#0" expanded="false" />
-            <element signature="e#19221#19222#0" expanded="false" />
-            <element signature="e#19252#19253#0" expanded="false" />
-            <element signature="e#19284#19285#0" expanded="false" />
-            <element signature="e#19314#19315#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/NEATMario/NEATAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="class#Coord#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#Coord#0;class#Coord#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#Dendrite#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="class#Axon#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#addMember#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getResponse#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#setFitnessFunction#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#updateFitness#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#updateFitness#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#updateFitness#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#addSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeSpecies#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeBest#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeBest#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeBest#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeWorst#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeWorst#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeWorst#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#replaceSpecies#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#replaceSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getFitness#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#atRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#atLeastRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#atMostRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getRank#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#inTopPercentile#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#inBottomPercentile#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getTopPercentile#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getBottomPercentile#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="e#10669#10670#0" expanded="true" />
-            <element signature="e#10695#10696#0" expanded="true" />
-            <element signature="e#11511#11512#0" expanded="true" />
-            <element signature="e#11543#11544#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/environments/Environment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/MarioComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6375">
-          <caret line="375" column="53" selection-start-line="375" selection-start-column="53" selection-end-line="375" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Enemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/LevelScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3604">
-          <caret line="212" column="47" selection-start-line="212" selection-start-column="47" selection-end-line="212" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ForwardJumpingAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Mario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1193#1194#0" expanded="false" />
-            <element signature="e#1252#1253#0" expanded="false" />
-            <element signature="e#18985#18986#0" expanded="false" />
-            <element signature="e#19008#19009#0" expanded="false" />
-            <element signature="e#19157#19158#0" expanded="false" />
-            <element signature="e#19186#19187#0" expanded="false" />
-            <element signature="e#19221#19222#0" expanded="false" />
-            <element signature="e#19252#19253#0" expanded="false" />
-            <element signature="e#19284#19285#0" expanded="false" />
-            <element signature="e#19314#19315#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/human/HumanKeyboardAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/BulletBill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="64" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Mario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="40" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1193#1194#0" expanded="false" />
-            <element signature="e#1252#1253#0" expanded="false" />
-            <element signature="e#18985#18986#0" expanded="false" />
-            <element signature="e#19008#19009#0" expanded="false" />
-            <element signature="e#19157#19158#0" expanded="false" />
-            <element signature="e#19186#19187#0" expanded="false" />
-            <element signature="e#19221#19222#0" expanded="false" />
-            <element signature="e#19252#19253#0" expanded="false" />
-            <element signature="e#19284#19285#0" expanded="false" />
-            <element signature="e#19314#19315#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Enemy.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/human/CheaterKeyboardAgent.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/Stats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
-          <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+        <state relative-caret-position="90">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/CompetitionScore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1503,13 +1276,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/CompetitionScore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
+        <state relative-caret-position="810">
           <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1531,6 +1310,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="59" column="54" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1545,6 +1325,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="23" column="22" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1562,122 +1343,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/TimingAgent.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ForwardJumpingAgent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="45" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="39" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/tools/LOGGER.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/Stats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="13" column="4" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/RandomSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/competition/cig/sergeykarakovskiy/SergeyKarakovskiy_JumpingAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/tools/EvaluationOptions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/CompetitionScore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
+        <state relative-caret-position="705">
           <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/CustomRun.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/TimingAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/Play.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/human/CheaterKeyboardAgent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="120" column="17" selection-start-line="120" selection-start-column="17" selection-end-line="120" selection-end-column="17" />
+        <state relative-caret-position="165">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/BulletBill.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="64" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/human/HumanKeyboardAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/BasicAIAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="29" column="72" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ScaredAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ForwardAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ForwardJumpingAgent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Mario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1193#1194#0" expanded="false" />
-            <element signature="e#1252#1253#0" expanded="false" />
-            <element signature="e#18985#18986#0" expanded="false" />
-            <element signature="e#19008#19009#0" expanded="false" />
-            <element signature="e#19157#19158#0" expanded="false" />
-            <element signature="e#19186#19187#0" expanded="false" />
-            <element signature="e#19221#19222#0" expanded="false" />
-            <element signature="e#19252#19253#0" expanded="false" />
-            <element signature="e#19284#19285#0" expanded="false" />
-            <element signature="e#19314#19315#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/environments/EnvCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/Evolve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ScaredAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/Percept.java" />
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/Action.java" />
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/SimpleAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/good_enof/AbstractAgent.java" />
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/tools/KnowledgeBase.java" />
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/logic/p_agents/KB.java" />
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/Agent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/logic/p_agents/KBAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/ForwardAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="110" column="28" selection-start-line="110" selection-start-column="28" selection-end-line="110" selection-end-column="28" />
+          <folding>
+            <marker date="1481234202000" expanded="true" signature="6414:6442" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Sprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="false" />
             <element signature="e#2909#2910#0" expanded="false" />
@@ -1688,92 +1496,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/MarioComponent.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/level/Level.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="136" column="23" selection-start-line="136" selection-start-column="18" selection-end-line="136" selection-end-column="23" />
+        <state relative-caret-position="105">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_101/src.zip!/java/util/Comparator.java" />
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/Agent.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/logic/AgentProgram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_101/src.zip!/java/util/function/Function.java" />
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/LevelScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="114" column="72" selection-start-line="114" selection-start-column="72" selection-end-line="114" selection-end-column="72" />
+        <state relative-caret-position="75">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/environments/Environment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+        <state relative-caret-position="0">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/ai/NEATMario/NEATAgent.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/LevelScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="305" column="16" selection-start-line="305" selection-start-column="16" selection-end-line="305" selection-end-column="16" />
+        <state relative-caret-position="126">
+          <caret line="167" column="21" selection-start-line="167" selection-start-column="21" selection-end-line="167" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="class#Coord#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#Coord#0;class#Coord#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#Dendrite#0;class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="class#Axon#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#addMember#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getResponse#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#setFitnessFunction#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#updateFitness#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#updateFitness#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#updateFitness#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#addSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeSpecies#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeBest#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeBest#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeBest#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeWorst#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeWorst#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#removeWorst#2;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#replaceSpecies#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#replaceSpecies#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getFitness#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#atRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#atLeastRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#atMostRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getRank#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getRank#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#inTopPercentile#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#inBottomPercentile#0;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getTopPercentile#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="method#getBottomPercentile#1;class#Population#0;class#NEATAgent#0" expanded="false" />
-            <element signature="e#10669#10670#0" expanded="true" />
-            <element signature="e#10695#10696#0" expanded="true" />
-            <element signature="e#11511#11512#0" expanded="true" />
-            <element signature="e#11543#11544#0" expanded="true" />
+            <marker date="1251827403000" expanded="true" signature="2123:2227" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/MarioComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="341" column="51" selection-start-line="341" selection-start-column="51" selection-end-line="341" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/mario/engine/sprites/Mario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="677" column="10" selection-start-line="677" selection-start-column="10" selection-end-line="677" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/tools/ToolsConfigurator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/java/awt/event/InputEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="58" column="22" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/Play.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/src.zip!/java/awt/event/KeyEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-324">
+          <caret line="953" column="16" selection-start-line="953" selection-start-column="16" selection-end-line="953" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/idsia/scenarios/MainRun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state relative-caret-position="111">
+          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/human/HumanKeyboardAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="68" column="38" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/idsia/ai/agents/NEATMario/NEATAgent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Species#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
+            <element signature="method#Species#1;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
+            <element signature="class#Dendrite#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
+            <element signature="class#Axon#0;class#Species#0;class#Population#0;class#NEATAgent#0" expanded="false" />
+            <element signature="e#2822#2823#0" expanded="true" />
+            <element signature="e#2866#2867#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1835,6 +1674,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
