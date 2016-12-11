@@ -268,7 +268,7 @@ public class NEATAgent implements Agent{
             return 0;
         }
 
-        private ArrayList<Predicate<Byte>> classificationFilter;
+        private ArrayList<Predicate<Byte>> classificationFilter = new ArrayList<>();
     }
 
     public NEATAgent(String s)
