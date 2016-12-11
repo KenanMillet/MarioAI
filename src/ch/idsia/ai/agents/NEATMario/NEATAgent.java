@@ -39,6 +39,17 @@ public class NEATAgent implements Agent{
                 for(int i = 0; i < members.length; ++i) addMember(members[i].getKey().loc.x, members[i].getKey().loc.y, members[i].getKey().label, members[i].getValue().action);
             }
 
+            public boolean equals(Object o) {
+                if(this == o) return true;
+                if(o == null) return false;
+                return species.equals(((Species)o).species);
+            }
+            public int hashCode() {
+                int result = 3;
+                result = 37 * result + species.hashCode();
+                return result;
+            }
+
             public class Dendrite {
                 public class Coord {
                     public Coord(int x, int y) {
@@ -53,6 +64,20 @@ public class NEATAgent implements Agent{
                     this.loc = new Coord(x, y);
                     this.label = label;
                 }
+
+                public boolean equals(Object o) {
+                    if(this == o) return true;
+                    if(o == null) return false;
+                    return loc.x == ((Dendrite)o).loc.x && loc.y == ((Dendrite)o).loc.y && label == ((Dendrite)o).label;
+                }
+                public int hashCode() {
+                    int result = 3;
+                    result = 37 * result + loc.x;
+                    result = 37 * result + loc.y;
+                    result = 37 * result + label;
+                    return result;
+                }
+
                 public Coord loc;
                 public int label;
             }
@@ -60,6 +85,18 @@ public class NEATAgent implements Agent{
                 public Axon(int action) {
                     this.action = action;
                 }
+
+                public boolean equals(Object o) {
+                    if(this == o) return true;
+                    if(o == null) return false;
+                    return action == ((Axon)o).action;
+                }
+                public int hashCode() {
+                    int result = 3;
+                    result = 37 * result + action;
+                    return result;
+                }
+
                 public int action;
             }
 
@@ -296,10 +333,10 @@ public class NEATAgent implements Agent{
     {
         setName(s);
         currentSpecies = population.make_Species();
-        currentSpecies.addMember(0, 10, 1, Mario.KEY_JUMP);
-        currentSpecies.addMember(1, 10, 1, Mario.KEY_JUMP);
-        currentSpecies.addMember(2, 10, 1, Mario.KEY_JUMP);
-        currentSpecies.addMember(3, 10, 1, Mario.KEY_JUMP);
+        currentSpecies.addMember(0, 12, 1, Mario.KEY_JUMP);
+        currentSpecies.addMember(1, 12, 1, Mario.KEY_JUMP);
+        currentSpecies.addMember(2, 12, 1, Mario.KEY_JUMP);
+        currentSpecies.addMember(3, 12, 1, Mario.KEY_JUMP);
         population.addSpecies(currentSpecies);
         labeler.addClassification(aByte -> aByte == -10);
     }
