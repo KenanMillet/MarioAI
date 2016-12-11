@@ -333,10 +333,13 @@ public class NEATAgent implements Agent{
     {
         setName(s);
         currentSpecies = population.make_Species();
-        currentSpecies.addMember(0, 12, 1, Mario.KEY_JUMP);
-        currentSpecies.addMember(1, 12, 1, Mario.KEY_JUMP);
-        currentSpecies.addMember(2, 12, 1, Mario.KEY_JUMP);
-        currentSpecies.addMember(3, 12, 1, Mario.KEY_JUMP);
+//        currentSpecies.addMember(0, 12, 1, Mario.KEY_JUMP);
+//        currentSpecies.addMember(1, 12, 1, Mario.KEY_JUMP);
+//        currentSpecies.addMember(2, 12, 1, Mario.KEY_JUMP);
+
+        currentSpecies.addMember(9, 16, 1, Mario.KEY_RIGHT);
+        currentSpecies.addMember(12, 12, 1, Mario.KEY_JUMP);
+        currentSpecies.addMember(12, 12, 1, Mario.KEY_SPEED);
         population.addSpecies(currentSpecies);
         labeler.addClassification(aByte -> aByte == -10);
     }
@@ -369,8 +372,10 @@ public class NEATAgent implements Agent{
         System.out.println();
         System.out.println();
 
-        action[Mario.KEY_RIGHT] = true;
-//        action[Mario.KEY_JUMP] = true;
+
+        //action[Mario.KEY_RIGHT] = true;
+        //action[Mario.KEY_SPEED] = true;
+        action[Mario.KEY_JUMP] = action[Mario.KEY_JUMP] && observation.mayMarioJump() || !observation.isMarioOnGround();
         System.out.println();
         System.out.println();
         return action;
