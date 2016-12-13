@@ -1,18 +1,20 @@
 package ch.idsia.ai.agents.NEATMario;
 
 import ch.idsia.ai.agents.Agent;
+import ch.idsia.mario.engine.MarioComponent;
 import ch.idsia.mario.engine.sprites.Mario;
 import ch.idsia.mario.environments.Environment;
+import ch.idsia.tools.EvaluationInfo;
+import sun.swing.plaf.windows.ClassicSortArrowIcon;
 
 import java.util.*;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.ceil;
-
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 
 /**
@@ -22,19 +24,21 @@ public class NEATAgent implements Agent {
 
     protected boolean action[] = new boolean[Environment.numberOfButtons];
     protected String name;
-    protected Classifier labeler = new Classifier();
     protected Population population = new Population(
             species -> { return 1.0;
-            }
+            }, new Classifier()
     );
-    protected Population.Species currentSpecies;
 
 
     public class Population {
 
         public class Species {
-            public Species() {
-
+            public Species(Species s) {
+                for(Map.Entry<Dendrite, Set<Axon>> e : s.species.entrySet())
+                {
+                    for(Axon a : e.getValue())
+                    addMember(e.getKey().loc.x, e.getKey().loc.y, e.getKey().label, a.action);
+                }
             }
 
             public Species(Map.Entry<Dendrite, Axon>... members) {
@@ -130,19 +134,77 @@ public class NEATAgent implements Agent {
                 return result;
             }
 
+            public int numberOfMembers() {
+                int result = 0;
+                for(Set<Axon> s : species.values()) result += s.size();
+                return result;
+            }
+
             private HashMap<Dendrite, Set<Axon>> species = new HashMap<>();
         }
 
-        public Species make_Species() {
-            return new Species();
-        }
-
-        Population(Function<Species, Double> fitnessFunction, Species... species) {
+        Population(Function<Species, Double> fitnessFunction, Classifier labeler, Species... species) {
             this.fitnessFunction = fitnessFunction;
+            this.labeler = labeler;
             Set<Species> specs = new HashSet<>();
             for (int i = 0; i < species.length; ++i) specs.add(species[i]);
-            this.population.put(0.0, specs);
+            if(!specs.isEmpty()) this.population.put(0.0, specs);
         }
+
+        public Species newSpecies() {
+            return new Species();
+        }
+        Species randomGenSpecies(int m) {
+            return randomGenSpecies(1, m).iterator().next();
+        }
+        public Set<Species> randomGenSpecies(int n, int m) {
+            BiFunction<Integer, Integer, Integer> rngB = (lower, upper) ->
+                     (new Random().nextInt(abs(upper - lower))
+                    + new Random().nextInt(abs(upper - lower))
+                    + new Random().nextInt(abs(upper - lower))
+                    + (3 * lower)) / 3;
+            Function<Integer, Integer> rng = (upper) -> rngB.apply(0, upper);
+
+            Set<Species> result = new HashSet<>();
+
+            for (int i = 0; i < n; ++i)
+            {
+                Species s = newSpecies();
+                for(int j = 0; j < m; ++j)
+                {
+                    s.addMember(rng.apply(Environment.HalfObsWidth*2), rng.apply(Environment.HalfObsHeight*2), new Random().nextInt(abs(labeler.numberOfLabels()-1)) + 1, new Random().nextInt(Environment.numberOfButtons));
+                }
+                addSpecies(0.0, s);
+                result.add(s);
+            }
+            return result;
+        }
+        public int nextGen() {
+            ArrayList<Species> best = removeBest(0.5);
+            population = new TreeMap<>((o1, o2) -> -(o1.compareTo(o2)));
+            currentSpecies = 0;
+
+            for(Species s : best)
+            {
+                addSpecies(new Species(s));
+                addSpecies(randomGenSpecies(s.numberOfMembers() + new Random().nextInt(3) - 1));
+            }
+
+            return ++gen;
+        }
+        public Species nextSpecies() {
+            if(currentSpecies >= size()) nextGen();
+            int n = 0;
+            Set<Species> speciesSet = null;
+            for(Set<Species> specs : population.values())
+            {
+                if(n + specs.size() > currentSpecies) speciesSet = specs;
+                n += specs.size();
+            }
+            Species specs[] = ((Species[]) speciesSet.toArray());
+            return specs[currentSpecies - n];
+        }
+
 
         public void setFitnessFunction(Function<Species, Double> fitnessFunction) {
             this.fitnessFunction = fitnessFunction;
@@ -272,23 +334,26 @@ public class NEATAgent implements Agent {
             return fitness;
         }
 
-        public final Map.Entry<Double, Set<Species>> atRank(int n) {
+        public final Map.Entry<Double, Species> atRank(int n) {
             int i = 0;
-            for (Iterator<Map.Entry<Double, Set<Species>>> itr = population.entrySet().iterator(); i < n && itr.hasNext(); ++i) {
-                if (i == n - 1) return itr.next();
-                itr.next();
+            for (Map.Entry<Double, Set<Species>> specs : population.entrySet())
+            {
+                for(Species s : specs.getValue())
+                {
+                    if(++i == n) return new AbstractMap.SimpleEntry<>(specs.getKey(), s);
+                }
             }
             return null;
         }
 
         public final SortedMap<Double, Set<Species>> atLeastRank(int n) {
-            Map.Entry<Double, Set<Species>> e = atRank(n);
+            Map.Entry<Double, Species> e = atRank(n);
             if (e == null) return null;
             return population.headMap(e.getKey());
         }
 
         public final SortedMap<Double, Set<Species>> atMostRank(int n) {
-            Map.Entry<Double, Set<Species>> e = atRank(n);
+            Map.Entry<Double, Species> e = atRank(n);
             if (e == null) return null;
             return population.tailMap(e.getKey());
         }
@@ -305,7 +370,7 @@ public class NEATAgent implements Agent {
             for (Map.Entry<Double, Set<Species>> e : population.entrySet()) {
                 for (Species s : e.getValue()) {
                     ++i;
-                    if (species == s) return i;
+                    if (species.equals(s)) return i;
                 }
             }
             return 0;
@@ -339,8 +404,26 @@ public class NEATAgent implements Agent {
             return 1.0 - ((double) rank / (double) population.size());
         }
 
+        public Map<Double, Set<Species>> getPopulation() {
+            return population;
+        }
+
+        public int size() {
+            int result = 0;
+            for(Set<Species> specs : population.values()) result += specs.size();
+            return result;
+        }
+
+        public int generation() {
+            return gen;
+        }
+
+        public Classifier labeler;
+        private int gen = 0;
+
         private Function<Species, Double> fitnessFunction;
         private TreeMap<Double, Set<Species>> population = new TreeMap<>((o1, o2) -> -(o1.compareTo(o2)));
+        private int currentSpecies = 0;
     }
 
     public class Classifier {
@@ -360,25 +443,19 @@ public class NEATAgent implements Agent {
             return 0;
         }
 
+        public int numberOfLabels() {
+            return classificationFilter.size();
+        }
+
         private ArrayList<Predicate<Byte>> classificationFilter = new ArrayList<>();
     }
 
     public NEATAgent() {
-        this("NEAT \"Good 'nuff\" Agent");
+        this("GoOD ENuFF Agent");
     }
-    public NEATAgent(String s)
-    {
+    public NEATAgent(String s) {
         setName(s);
-        currentSpecies = population.make_Species();
-//        currentSpecies.addMember(0, 12, 1, Mario.KEY_JUMP);
-//        currentSpecies.addMember(1, 12, 1, Mario.KEY_JUMP);
-//        currentSpecies.addMember(2, 12, 1, Mario.KEY_JUMP);
-
-        currentSpecies.addMember(9, 16, 1, Mario.KEY_RIGHT);
-        currentSpecies.addMember(12, 12, 1, Mario.KEY_JUMP);
-        currentSpecies.addMember(12, 12, 1, Mario.KEY_SPEED);
-        population.addSpecies(currentSpecies);
-        labeler.addClassification(aByte -> aByte == -10);
+        population.randomGenSpecies(10, 20);
     }
 
     public void reset() {
@@ -386,6 +463,7 @@ public class NEATAgent implements Agent {
     }
 
     public boolean[] getAction(Environment observation) {
+        Population.Species currentSpecies = population.atRank(1).getValue();
         reset();
         //Terrain Info Generalization level 1, Enemy Info Generalization level 0
         byte data[][] = observation.getMergedObservationZ(1, 0);
@@ -393,10 +471,10 @@ public class NEATAgent implements Agent {
         {
             for(int x = 0; x < data[y].length; ++x)
             {
-                Set<Integer> responses = currentSpecies.getResponse(x, y, labeler.classify(data[y][x]));
+                Set<Integer> responses = currentSpecies.getResponse(x, y, population.labeler.classify(data[y][x]));
 
 //                System.out.printf("%d ", data[y][x]);
-                System.out.printf("(%d, %d):\t%d\t", x, y, labeler.classify(data[y][x]));
+                System.out.printf("(%d, %d):\t%d\t", x, y, population.labeler.classify(data[y][x]));
 
                 if(responses != null) {
                     for (Integer r : responses) {
