@@ -1,5 +1,6 @@
 package ch.idsia.ai.agents.NEATMario;
 
+import ch.idsia.ai.Evolvable;
 import ch.idsia.ai.agents.Agent;
 import ch.idsia.mario.engine.MarioComponent;
 import ch.idsia.mario.engine.sprites.Mario;
@@ -20,7 +21,7 @@ import static java.lang.Math.ceil;
 /**
  * Created by Owner on 12/8/2016.
  */
-public class NEATAgent implements Agent {
+public class NEATAgent implements Agent, Evolvable  {
 
     protected boolean action[] = new boolean[Environment.numberOfButtons];
     protected String name;
@@ -456,6 +457,21 @@ public class NEATAgent implements Agent {
     public NEATAgent(String s) {
         setName(s);
         population.randomGenSpecies(10, 20);
+    }
+
+    @Override
+    public Evolvable getNewInstance() {
+        return null;
+    }
+
+    @Override
+    public Evolvable copy() {
+        return null;
+    }
+
+    @Override
+    public void mutate() {
+
     }
 
     public void reset() {
