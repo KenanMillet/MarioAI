@@ -1,36 +1,28 @@
 package ch.idsia.ai.agents.NEATMario;
 
+import ch.idsia.ai.Evolvable;
 import ch.idsia.ai.agents.Agent;
-import ch.idsia.mario.engine.MarioComponent;
 import ch.idsia.mario.engine.sprites.Mario;
 import ch.idsia.mario.environments.Environment;
-import ch.idsia.tools.EvaluationInfo;
-import sun.swing.plaf.windows.ClassicSortArrowIcon;
 
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import static com.sun.javafx.util.Utils.clamp;
 import static java.lang.Math.abs;
 import static java.lang.Math.ceil;
-import static java.lang.Math.min;
 
 
 /**
  * Created by Owner on 12/8/2016.
  */
-public class NEATAgent implements Agent {
+public class NEATAgent implements Agent, Evolvable  {
 
-    protected boolean action[] = new boolean[Environment.numberOfButtons];
+    protected boolean action[];
     protected String name;
-    protected Population population = new Population(
-            species -> { return 1.0;
-            }, new Classifier()
-    );
+    protected Population population;
 
 
     public class Population {
@@ -40,7 +32,7 @@ public class NEATAgent implements Agent {
                 for(Map.Entry<Dendrite, Set<Axon>> e : s.species.entrySet())
                 {
                     for(Axon a : e.getValue())
-                    addMember(e.getKey().loc.x, e.getKey().loc.y, e.getKey().label, a.action);
+                        addMember(e.getKey().loc.x, e.getKey().loc.y, e.getKey().label, a.action);
                 }
             }
 
@@ -223,7 +215,24 @@ public class NEATAgent implements Agent {
             private HashMap<Dendrite, Set<Axon>> species = new HashMap<>();
         }
 
-        Population(Function<Species, Double> fitnessFunction, Classifier labeler, Species... species) {
+        public Population(Population o) {
+            this.labeler = new Classifier(o.labeler);
+            this.gen = o.gen;
+            this.fitnessFunction = o.fitnessFunction.compose((Species s) -> s);
+            this.currentSpecies = o.currentSpecies;
+            this.population = new TreeMap<>((o1, o2) -> -(o1.compareTo(o2)));
+
+            for(Map.Entry<Double, Set<Species>> e : o.population.entrySet())
+            {
+                for(Species s : e.getValue())
+                {
+                    this.addSpecies(e.getKey(), s);
+                }
+            }
+        }
+
+        public Population(Function<Species, Double> fitnessFunction, Classifier labeler, Species... species) {
+            this.population = new TreeMap<>((o1, o2) -> -(o1.compareTo(o2)));
             this.fitnessFunction = fitnessFunction;
             this.labeler = labeler;
             Set<Species> specs = new HashSet<>();
@@ -239,10 +248,10 @@ public class NEATAgent implements Agent {
         }
         public Set<Species> randomGenSpecies(int n, int m) {
             BiFunction<Integer, Integer, Integer> rngB = (lower, upper) ->
-                     (new Random().nextInt(abs(upper - lower))
-                    + new Random().nextInt(abs(upper - lower))
-                    + new Random().nextInt(abs(upper - lower))
-                    + (3 * lower)) / 3;
+                    (new Random().nextInt(abs(upper - lower))
+                            + new Random().nextInt(abs(upper - lower))
+                            + new Random().nextInt(abs(upper - lower))
+                            + (3 * lower)) / 3;
             Function<Integer, Integer> rng = (upper) -> rngB.apply(0, upper);
 
             Set<Species> result = new HashSet<>();
@@ -508,11 +517,20 @@ public class NEATAgent implements Agent {
         private int gen = 0;
 
         private Function<Species, Double> fitnessFunction;
-        private TreeMap<Double, Set<Species>> population = new TreeMap<>((o1, o2) -> -(o1.compareTo(o2)));
+        private TreeMap<Double, Set<Species>> population;
         private int currentSpecies = 0;
     }
 
     public class Classifier {
+        Classifier(Classifier o) {
+            this.classificationFilter = new ArrayList<>();
+            for(Predicate<Byte> classification : o.classificationFilter) this.addClassification(classification.negate().negate());
+        }
+        Classifier(Predicate<Byte>... classifications) {
+            this.classificationFilter = new ArrayList<>();
+            for(Predicate<Byte> classification : classifications) this.addClassification(classification);
+        }
+
         public int addClassification(Predicate<Byte> qualifier) {
             classificationFilter.add(qualifier);
             return classificationFilter.size();
@@ -533,15 +551,39 @@ public class NEATAgent implements Agent {
             return classificationFilter.size();
         }
 
-        private ArrayList<Predicate<Byte>> classificationFilter = new ArrayList<>();
+        private ArrayList<Predicate<Byte>> classificationFilter;
     }
 
     public NEATAgent() {
         this("GoOD ENuFF Agent");
     }
     public NEATAgent(String s) {
-        setName(s);
-        population.randomGenSpecies(10, 20);
+        this.setName(s);
+        this.population = new Population( species -> 1.0, new Classifier() );
+        this.action = new boolean[Environment.numberOfButtons];
+        this.population.randomGenSpecies(10, 20);
+        this.reset();
+    }
+    public NEATAgent(NEATAgent o) {
+        this.setName(o.name);
+        this.action = new boolean[o.action.length];
+        for(int i = 0; i < o.action.length; ++i) action[i] = o.action[i];
+        this.population = new Population(o.population);
+        this.reset();
+    }
+
+    @Override
+    public Evolvable getNewInstance() {
+        return null;
+    }
+
+    @Override
+    public Evolvable copy() {
+        return null;
+    }
+
+    @Override
+    public void mutate() {
     }
 
     public void reset() {
