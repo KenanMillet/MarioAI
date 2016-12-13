@@ -32,6 +32,7 @@ public class AppletLauncher extends JApplet
             Agent hka = new HumanKeyboardAgent();
             hka.reset();            
             mario = new MarioComponent(getWidth(), getHeight());
+            System.out.println(mario.getName());
             setContentPane(mario);
             setFocusable(false);
             mario.setFocusCycleRoot(true);

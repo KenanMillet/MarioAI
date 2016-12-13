@@ -3,6 +3,7 @@ package ch.idsia.scenarios;
 import ch.idsia.ai.Evolvable;
 import ch.idsia.ai.agents.Agent;
 import ch.idsia.ai.agents.ai.SimpleMLPAgent;
+import ch.idsia.ai.agents.NEATMario.NEATAgent;
 import ch.idsia.ai.ea.ES;
 import ch.idsia.ai.tasks.ProgressTask;
 import ch.idsia.ai.tasks.Task;
@@ -35,7 +36,7 @@ public class Evolve {
         for (int difficulty = 0; difficulty < 11; difficulty++)
         {
             System.out.println("New Evolve phase with difficulty = " + difficulty + " started.");
-            Evolvable initial = new SimpleMLPAgent();
+            Evolvable initial = new NEATAgent();
 
             options.setLevelDifficulty(difficulty);
             options.setAgent((Agent)initial);
@@ -53,7 +54,7 @@ public class Evolve {
                 System.out.println("Generation " + gen + " best " + bestResult);
                 options.setVisualization(gen % 5 == 0 || bestResult > 4000);
                 options.setMaxFPS(true);
-                Agent a = (Agent) es.getBests()[0];
+                Agent a = new NEATAgent();
                 a.setName(((Agent)initial).getName() + df.format(gen));
 //                AgentsPool.setCurrentAgent(a);
                 bestAgents.add(a);

@@ -32,10 +32,12 @@ public class GlobalOptions {
 
     public static void registerMarioComponent(MarioComponent mc)
     {
+        //System.out.println("Am I null in here too: " + mc.getName());
         marioComponent = mc;
     }
 
     public static MarioComponent getMarioComponent() {
+        //System.out.println("Am I null in here too: " + marioComponent.getName());
         return marioComponent;
     }
     

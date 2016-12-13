@@ -1,5 +1,6 @@
 package ch.idsia.ai.agents.NEATMario;
 
+import ch.idsia.ai.Evolvable;
 import ch.idsia.ai.agents.Agent;
 import ch.idsia.ai.agents.ai.BasicAIAgent;
 import ch.idsia.mario.engine.GlobalOptions;
@@ -25,7 +26,7 @@ import static java.lang.Math.ceil;
 /**
  * Created by Owner on 12/8/2016.
  */
-public class NEATAgent extends BasicAIAgent implements Agent {
+public class NEATAgent extends BasicAIAgent implements Agent, Evolvable {
 
     EvaluationOptions evaluationOptions;
     Simulation simulator;
@@ -459,26 +460,46 @@ public class NEATAgent extends BasicAIAgent implements Agent {
         private ArrayList<Predicate<Byte>> classificationFilter = new ArrayList<>();
     }
 
-    public NEATAgent(EvaluationOptions eval) {
-        this("GoOD ENuFF Agent", eval);
-    }
-    public NEATAgent(String s, EvaluationOptions eval) {
-        super(s);
+//    public NEATAgent(EvaluationOptions eval) {
+//        this("GoOD ENuFF Agent"/*, eval*/);
+//    }
+    public NEATAgent(/*, EvaluationOptions eval*/) {
+        super("GoOD ENuFF Agent");
         reset();
-        setEvaluationOptions(eval);
-        if(GlobalOptions.getMarioComponent() == null) mc = new MarioComponent(320, 240);
-        simulator = new BasicSimulator(evaluationOptions.getSimulationOptionsCopy());
+//        setEvaluationOptions(eval);
+//        if(GlobalOptions.getMarioComponent() == null) mc = new MarioComponent(320, 240);
+        //System.out.println(GlobalOptions.getMarioComponent() == null);
+//        simulator = new BasicSimulator(evaluationOptions.getSimulationOptionsCopy());
         population.randomGenSpecies(10, 20);
     }
 
+    @Override
+    public Evolvable getNewInstance() {
+        return null;
+    }
+
+    @Override
+    public Evolvable copy() {
+        return null;
+    }
+
     public void reset() {
-        System.out.print(name + " is resetting...");
+//        System.out.print(name + " is resetting...");
         action = new boolean[Environment.numberOfButtons];
-        System.out.println(" done.");
+//        System.out.println(" done.");
+    }
+
+    @Override
+    public void mutate() {
+
     }
 
     public boolean[] getAction(Environment observation) {
-        EvaluationInfo evaluationInfo = getEvalInfo();
+//        EvaluationInfo evaluationInfo = getEvalInfo();
+//        System.out.println(evaluationInfo.agentName);
+//        System.out.println(evaluationInfo.agentType);
+//        System.out.println(evaluationInfo.totalTimeGiven);
+//        System.out.println(evaluationInfo.timeLeft);
 
         Population.Species currentSpecies = population.atRank(1).getValue();
         reset();
@@ -491,7 +512,7 @@ public class NEATAgent extends BasicAIAgent implements Agent {
                 Set<Integer> responses = currentSpecies.getResponse(x, y, population.labeler.classify(data[y][x]));
 
 //                System.out.printf("%d ", data[y][x]);
-                System.out.printf("(%d, %d):\t%d\t", x, y, population.labeler.classify(data[y][x]));
+//                System.out.printf("(%d, %d):\t%d\t", x, y, population.labeler.classify(data[y][x]));
 
                 if(responses != null) {
                     for (Integer r : responses) {
@@ -499,17 +520,17 @@ public class NEATAgent extends BasicAIAgent implements Agent {
                     }
                 }
             }
-            System.out.println();
+//            System.out.println();
         }
-        System.out.println();
-        System.out.println();
+//        System.out.println();
+//        System.out.println();
 
 
         //action[Mario.KEY_RIGHT] = true;
         //action[Mario.KEY_SPEED] = true;
         action[Mario.KEY_JUMP] = action[Mario.KEY_JUMP] && observation.mayMarioJump() || !observation.isMarioOnGround();
-        System.out.println();
-        System.out.println();
+//        System.out.println();
+//        System.out.println();
         return action;
     }
 
@@ -528,14 +549,15 @@ public class NEATAgent extends BasicAIAgent implements Agent {
 
     public void setEvaluationOptions(EvaluationOptions eval) { this.evaluationOptions = eval; }
 
-    public EvaluationInfo getEvalInfo() {
+//    public EvaluationInfo getEvalInfo() {
+//
+////        simulator.setSimulationOptions(evaluationOptions);
+//        if(GlobalOptions.getMarioComponent() == null) mc = new MarioComponent(320, 240);
+//        //System.out.println("NEAT it's: " + mc.getName());
+//        return simulator.simulateOneLevel();
+//    }
 
-//        simulator.setSimulationOptions(evaluationOptions);
-        if(GlobalOptions.getMarioComponent() == null) mc = new MarioComponent(320, 240);
-        return simulator.simulateOneLevel();
-    }
-
-    public double fitness(EvaluationInfo marioInfo) {
-        return (marioInfo.marioStatus == 0) ? marioInfo.lengthOfLevelPassedPhys - abs(marioInfo.timeLeft-marioInfo.timeSpentOnLevel) : marioInfo.totalLengthOfLevelPhys - (marioInfo.timeSpentOnLevel-marioInfo.timeLeft);
-    }
+//    public double fitness(EvaluationInfo marioInfo) {
+//        return (marioInfo.marioStatus == 0) ? marioInfo.lengthOfLevelPassedPhys - abs(marioInfo.timeLeft-marioInfo.timeSpentOnLevel) : marioInfo.totalLengthOfLevelPhys - (marioInfo.timeSpentOnLevel-marioInfo.timeLeft);
+//    }
 }

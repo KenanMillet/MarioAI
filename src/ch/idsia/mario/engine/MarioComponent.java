@@ -68,8 +68,9 @@ public class MarioComponent extends JComponent implements Runnable, /*KeyListene
         {
             this.cheatAgent = new CheaterKeyboardAgent();
             this.addKeyListener(cheatAgent);
-        }        
+        }
 
+        //System.out.println("Is this null too: " + this.getName());
         GlobalOptions.registerMarioComponent(this);
     }
 

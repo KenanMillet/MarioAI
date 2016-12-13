@@ -22,7 +22,10 @@ public class BasicSimulator implements Simulation
     public BasicSimulator(SimulationOptions simulationOptions)
     {
         GlobalOptions.VisualizationOn = simulationOptions.isVisualization();
+        System.out.println("this: " + GlobalOptions.getMarioComponent().getName());
         this.marioComponent = GlobalOptions.getMarioComponent();
+        //System.out.println(GlobalOptions.getMarioComponent().getName());
+        System.out.println(marioComponent.getName());
         this.setSimulationOptions(simulationOptions);
     }
 
@@ -30,7 +33,12 @@ public class BasicSimulator implements Simulation
     {
         Agent agent = simulationOptions.getAgent();
         agent.reset();
+        System.out.println(marioComponent.getName());
+        if (GlobalOptions.getMarioComponent() == null) { System.out.println("help"); }
+        System.out.println(agent.getName());
+        System.out.println(agent.getType());
         marioComponent.setAgent(agent);
+        System.out.println(marioComponent.getName());
         return marioComponent;
     }
 

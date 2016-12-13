@@ -98,6 +98,7 @@ public class ToolsConfigurator extends JFrame
         {
             marioComponentFrame = new JFrame(/*evaluationOptions.getAgentName() +*/ "Mario Intelligent 2.0");
             marioComponent = new MarioComponent(320, 240);
+            //System.out.println("Another test: " + marioComponent.getName());
             marioComponentFrame.setContentPane(marioComponent);
             marioComponent.init();
             marioComponentFrame.pack();

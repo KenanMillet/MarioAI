@@ -89,7 +89,7 @@ public class MainRun
 //            AgentsPool.addAgent(new SergeyKarakovskiy_JumpingAgent());
 
 
-            NEATAgent n = new NEATAgent(evaluationOptions);
+            NEATAgent n = new NEATAgent();
             AgentsPool.addAgent(n);
 
 //------------------------------------------------------------------------------//
