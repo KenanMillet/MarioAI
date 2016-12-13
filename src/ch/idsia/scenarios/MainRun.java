@@ -39,6 +39,7 @@ public class MainRun
     private static int marioStatusSum = 0;
     private static int timeLeftSum = 0;
     private static int marioModeSum = 0;
+    static EvaluationOptions evaluationOptions;
 
 
 
@@ -46,7 +47,7 @@ public class MainRun
     public static void main(String[] args) {
         Environment observation = null;
         CmdLineOptions cmdLineOptions = new CmdLineOptions(args);
-        EvaluationOptions evaluationOptions = cmdLineOptions;  // if none options mentioned, all defalults are used.
+        evaluationOptions = cmdLineOptions;  // if none options mentioned, all defalults are used.
         createAgentsPool();
 
         if (scoring)
@@ -88,7 +89,7 @@ public class MainRun
 //            AgentsPool.addAgent(new SergeyKarakovskiy_JumpingAgent());
 
 
-            NEATAgent n = new NEATAgent();
+            NEATAgent n = new NEATAgent(evaluationOptions);
             AgentsPool.addAgent(n);
 
 //------------------------------------------------------------------------------//

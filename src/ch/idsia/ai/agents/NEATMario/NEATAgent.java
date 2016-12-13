@@ -1,11 +1,16 @@
 package ch.idsia.ai.agents.NEATMario;
 
 import ch.idsia.ai.agents.Agent;
+import ch.idsia.ai.agents.ai.BasicAIAgent;
+import ch.idsia.mario.engine.GlobalOptions;
 import ch.idsia.mario.engine.MarioComponent;
 import ch.idsia.mario.engine.sprites.Mario;
 import ch.idsia.mario.environments.Environment;
 import ch.idsia.tools.EvaluationInfo;
-import sun.swing.plaf.windows.ClassicSortArrowIcon;
+import ch.idsia.tools.EvaluationOptions;
+import ch.idsia.tools.Evaluator;
+import ch.idsia.mario.simulation.BasicSimulator;
+import ch.idsia.mario.simulation.Simulation;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -20,11 +25,15 @@ import static java.lang.Math.ceil;
 /**
  * Created by Owner on 12/8/2016.
  */
-public class NEATAgent implements Agent {
+public class NEATAgent extends BasicAIAgent implements Agent {
 
-    protected boolean action[] = new boolean[Environment.numberOfButtons];
-    protected String name;
-    protected Population population = new Population(
+    EvaluationOptions evaluationOptions;
+    Simulation simulator;
+    MarioComponent mc;
+
+//    protected boolean action[] = new boolean[Environment.numberOfButtons];
+//    protected String name;
+    private Population population = new Population(
             species -> { return 1.0;
             }, new Classifier()
     );
@@ -450,19 +459,27 @@ public class NEATAgent implements Agent {
         private ArrayList<Predicate<Byte>> classificationFilter = new ArrayList<>();
     }
 
-    public NEATAgent() {
-        this("GoOD ENuFF Agent");
+    public NEATAgent(EvaluationOptions eval) {
+        this("GoOD ENuFF Agent", eval);
     }
-    public NEATAgent(String s) {
-        setName(s);
+    public NEATAgent(String s, EvaluationOptions eval) {
+        super(s);
+        reset();
+        setEvaluationOptions(eval);
+        if(GlobalOptions.getMarioComponent() == null) mc = new MarioComponent(320, 240);
+        simulator = new BasicSimulator(evaluationOptions.getSimulationOptionsCopy());
         population.randomGenSpecies(10, 20);
     }
 
     public void reset() {
+        System.out.print(name + " is resetting...");
         action = new boolean[Environment.numberOfButtons];
+        System.out.println(" done.");
     }
 
     public boolean[] getAction(Environment observation) {
+        EvaluationInfo evaluationInfo = getEvalInfo();
+
         Population.Species currentSpecies = population.atRank(1).getValue();
         reset();
         //Terrain Info Generalization level 1, Enemy Info Generalization level 0
@@ -507,5 +524,18 @@ public class NEATAgent implements Agent {
 
     public void setName(String Name) {
         this.name = Name;
+    }
+
+    public void setEvaluationOptions(EvaluationOptions eval) { this.evaluationOptions = eval; }
+
+    public EvaluationInfo getEvalInfo() {
+
+//        simulator.setSimulationOptions(evaluationOptions);
+        if(GlobalOptions.getMarioComponent() == null) mc = new MarioComponent(320, 240);
+        return simulator.simulateOneLevel();
+    }
+
+    public double fitness(EvaluationInfo marioInfo) {
+        return (marioInfo.marioStatus == 0) ? marioInfo.lengthOfLevelPassedPhys - abs(marioInfo.timeLeft-marioInfo.timeSpentOnLevel) : marioInfo.totalLengthOfLevelPhys - (marioInfo.timeSpentOnLevel-marioInfo.timeLeft);
     }
 }
