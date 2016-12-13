@@ -11,10 +11,13 @@ import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import static com.sun.javafx.util.Utils.clamp;
 import static java.lang.Math.abs;
 import static java.lang.Math.ceil;
+import static java.lang.Math.min;
 
 
 /**
@@ -69,6 +72,42 @@ public class NEATAgent implements Agent {
                     public int y;
                 }
 
+                public void mutate(int xBound, int yBound, int numLabels) {
+                    Random rng = new Random();
+
+                    BiFunction<Double, Double, Double> gauss = (stddev, mean) -> rng.nextGaussian() * stddev + mean;
+                    Function<Integer, Integer> nextX = (oldX) -> {
+                        Double x = gauss.apply(((double)xBound)/6.0, (double)oldX) % ((double)xBound);
+                        if(x < 0.0) x += ((double)xBound);
+                        return x.intValue();
+                    };
+
+                    Function<Integer, Integer> nextY = (oldY) -> {
+                        Double y = gauss.apply(((double)yBound)/6.0, (double)oldY) % ((double)yBound);
+                        if(y < 0.0) y += ((double)yBound);
+                        return y.intValue();
+                    };
+
+                    //TODO: MAKE A BETTER MODEL THAT HANDLES LABEL MORE PROPERLY
+                    //  Label change chance based on euclidean distance from old loc to new loc
+                    //  Chance (if change) of changing to a given label = label frequency
+                    //  Further idea: map label frequency to location? Food for thought.
+                    Function<Integer, Integer> nextLabel = (oldLabel) -> {
+                        double labelChangeChance = 0.1;
+                        if(rng.nextDouble() < labelChangeChance) return rng.nextInt(numLabels);
+                        return oldLabel;
+                    };
+
+                    loc.x = nextX.apply(loc.x);
+                    loc.y = nextY.apply(loc.y);
+                    label = nextLabel.apply(label);
+                }
+
+                public Dendrite(Dendrite o) {
+                    this.loc = new Coord(o.loc.x, o.loc.y);
+                    this.label = o.label;
+                }
+
                 public Dendrite(int x, int y, int label) {
                     this.loc = new Coord(x, y);
                     this.label = label;
@@ -97,6 +136,10 @@ public class NEATAgent implements Agent {
                     this.action = action;
                 }
 
+                public Axon(Axon o) {
+                    this.action = o.action;
+                }
+
                 public boolean equals(Object o) {
                     if (this == o) return true;
                     if (o == null) return false;
@@ -109,16 +152,53 @@ public class NEATAgent implements Agent {
                     return result;
                 }
 
+                //TODO: MAKE MUTATE FUNCTION WORK AROUND DENDRITE MUTATE FUNCTION
+                //  may require that the mutate functions take extra params to share info
+                public void mutate(int numActions) {
+                    Random rng = new Random();
+
+                    Function<Integer, Integer> nextAction = (oldAction) -> {
+                        double actionChangeChance = 0.2;
+                        if(rng.nextDouble() < 0.2) return rng.nextInt(numActions);
+                        return oldAction;
+                    };
+
+                    action = nextAction.apply(action);
+                }
+
                 public int action;
             }
 
-            public void addMember(int x, int y, int label, int action) {
+            public void mutate(int xBound, int yBound, int numLabels, int numActions, double mutationChance) {
+                List<Map.Entry<Dendrite, Axon>> genes = new LinkedList<>();
+                for(Map.Entry<Dendrite, Set<Axon>> e : species.entrySet())
+                {
+                    for(Axon a : e.getValue())
+                    {
+                        genes.add(new AbstractMap.SimpleEntry<>(e.getKey(), a));
+                    }
+                }
+                species = new HashMap<>();
+                for(Map.Entry<Dendrite, Axon> gene : genes)
+                {
+                    if(new Random().nextDouble() < mutationChance)
+                    {
+                        gene.getKey().mutate(xBound, yBound, numLabels);
+                        gene.getValue().mutate(numActions);
+                    }
+                    addMember(gene.getKey(), gene.getValue());
+                }
+            }
+
+            public Set<Axon> addMember(int x, int y, int label, int action) {
+                return addMember(new Dendrite(x, y, label), new Axon(action));
+            }
+            public Set<Axon> addMember(Dendrite d, Axon a) {
                 Set<Axon> set = new HashSet<>();
-                set.add(new Axon(action));
-                Dendrite d = new Dendrite(x, y, label);
-                species.merge(d, set, (a, b) -> {
-                    a.addAll(b);
-                    return a;
+                set.add(a);
+                return species.merge(d, set, (i, j) -> {
+                    i.addAll(j);
+                    return i;
                 });
             }
 
@@ -180,14 +260,20 @@ public class NEATAgent implements Agent {
             return result;
         }
         public int nextGen() {
-            ArrayList<Species> best = removeBest(0.5);
-            population = new TreeMap<>((o1, o2) -> -(o1.compareTo(o2)));
+            double bestPercentile = 0.2;
+            double worstPercentile = 0.2;
+            double stochasticPopulationGrowth = 0.2;
+            ArrayList<Species> best = removeBest(bestPercentile);
+            removeWorst(worstPercentile);
             currentSpecies = 0;
 
-            for(Species s : best)
-            {
+            for (Species s : best) {
                 addSpecies(new Species(s));
-                addSpecies(randomGenSpecies(s.numberOfMembers() + new Random().nextInt(3) - 1));
+                if (new Random().nextDouble() < stochasticPopulationGrowth) addSpecies(new Species(s));
+            }
+            for (Set<Species> specs : population.values())
+            {
+                for(Species s : specs) s.mutate(2 * Environment.HalfObsWidth, 2 * Environment.HalfObsHeight, labeler.numberOfLabels(), Environment.numberOfButtons, 0.15);
             }
 
             return ++gen;
