@@ -17,6 +17,7 @@ import java.util.List;
 public class ProgressTask implements Task {
 
     private EvaluationOptions options;
+    public Evaluator evaluator;
 
     public ProgressTask(EvaluationOptions evaluationOptions) {
         setOptions(evaluationOptions);
@@ -26,7 +27,7 @@ public class ProgressTask implements Task {
         double distanceTravelled = 0;
 //        controller.reset();
         options.setAgent(controller);
-        Evaluator evaluator = new Evaluator(options);
+        evaluator = new Evaluator(options);
         List<EvaluationInfo> results = evaluator.evaluate();
         for (EvaluationInfo result : results) {
             //if (result.marioStatus == Mario.STATUS_WIN )

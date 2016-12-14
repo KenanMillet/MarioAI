@@ -26,6 +26,7 @@ public class Evaluator implements Runnable
 {
     Thread thisThread = null;
     EvaluationOptions evaluationOptions;
+    public EvaluationInfo evaluationInfo;
 
     private List<EvaluationInfo> evaluationSummary = new ArrayList<EvaluationInfo>();
 
@@ -52,7 +53,7 @@ public class Evaluator implements Runnable
                 ((ServerAgent)evaluationOptions.getAgent()).setFastTCP(evaluationOptions.isFastTCP());
                 init(evaluationOptions);
                 // Simulate One Level
-                EvaluationInfo evaluationInfo;
+                //EvaluationInfo evaluationInfo;
 
                 long startTime = System.currentTimeMillis();
                 String startMessage = "Evaluation started at " + GlobalOptions.getDateTime(null);
@@ -74,10 +75,11 @@ public class Evaluator implements Runnable
                 Collections.sort(evaluationSummary, new evBasicFitnessComparator());
 
                 LOGGER.println("Entire Evaluation Finished with results:", LOGGER.VERBOSE_MODE.ALL);
-//                for (EvaluationInfo ev : evaluationSummary)
-//                {
-//                    LOGGER.println(ev.toString(), LOGGER.VERBOSE_MODE.ALL);
-//                }
+                for (EvaluationInfo ev : evaluationSummary)
+                {
+                    //LOGGER.println(ev.toString(), LOGGER.VERBOSE_MODE.ALL);
+                    System.out.println(ev.toString());
+                }
                 long currentTime = System.currentTimeMillis();
                 long elapsed = currentTime - startTime;
                 LOGGER.println(startMessage, LOGGER.VERBOSE_MODE.ALL);

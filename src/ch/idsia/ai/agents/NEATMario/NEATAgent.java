@@ -4,12 +4,17 @@ import ch.idsia.ai.Evolvable;
 import ch.idsia.ai.agents.Agent;
 import ch.idsia.mario.engine.sprites.Mario;
 import ch.idsia.mario.environments.Environment;
+import ch.idsia.tools.EvaluationInfo;
+import ch.idsia.tools.EvaluationOptions;
+import ch.idsia.ai.tasks.Task;
+import ch.idsia.tools.Evaluator;
 
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.Random;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.ceil;
@@ -22,7 +27,10 @@ public class NEATAgent implements Agent, Evolvable  {
 
     protected boolean action[];
     protected String name;
-    protected Population population;
+    double fitest;
+    public Population population;
+    Evaluator evaluator;
+
 
 
     public class Population {
@@ -39,6 +47,36 @@ public class NEATAgent implements Agent, Evolvable  {
             public Species(Map.Entry<Dendrite, Axon>... members) {
                 for (int i = 0; i < members.length; ++i)
                     addMember(members[i].getKey().loc.x, members[i].getKey().loc.y, members[i].getKey().label, members[i].getValue().action);
+            }
+
+            public void print() {
+                for(Map.Entry<Dendrite, Set<Axon>> e : species.entrySet())
+                {
+                    for(Axon a : e.getValue())
+                    {
+                        System.out.print(e.getKey().label + " (" + e.getKey().loc.x  + ", " + e.getKey().loc.y + ") -> ");
+                        switch(a.action)
+                        {
+                            case Mario.KEY_DOWN:
+                                System.out.print("DOWN");
+                                break;
+                            case Mario.KEY_LEFT:
+                                System.out.print("LEFT");
+                                break;
+                            case Mario.KEY_RIGHT:
+                                System.out.print("RIGHT");
+                                break;
+                            case Mario.KEY_SPEED:
+                                System.out.print("SPEED");
+                                break;
+                            case Mario.KEY_JUMP:
+                                System.out.print("JUMP");
+                                break;
+                        }
+                        System.out.print("\t");
+                    }
+                }
+                System.out.println();
             }
 
             public boolean equals(Object o) {
@@ -151,7 +189,8 @@ public class NEATAgent implements Agent, Evolvable  {
 
                     Function<Integer, Integer> nextAction = (oldAction) -> {
                         double actionChangeChance = 0.2;
-                        if(rng.nextDouble() < 0.2) return rng.nextInt(numActions);
+                        int actions[] = new int[]{Mario.KEY_JUMP, Mario.KEY_RIGHT, Mario.KEY_SPEED};
+                        if(rng.nextDouble() < 0.2) return actions[rng.nextInt(3)];
                         return oldAction;
                     };
 
@@ -256,12 +295,14 @@ public class NEATAgent implements Agent, Evolvable  {
 
             Set<Species> result = new HashSet<>();
 
+            int actions[] = new int[]{Mario.KEY_JUMP, Mario.KEY_RIGHT, Mario.KEY_SPEED};
+
             for (int i = 0; i < n; ++i)
             {
                 Species s = newSpecies();
                 for(int j = 0; j < m; ++j)
                 {
-                    s.addMember(rng.apply(Environment.HalfObsWidth*2), rng.apply(Environment.HalfObsHeight*2), new Random().nextInt(abs(labeler.numberOfLabels()-1)) + 1, new Random().nextInt(Environment.numberOfButtons));
+                    s.addMember(rng.apply(Environment.HalfObsWidth*2), rng.apply(Environment.HalfObsHeight*2), new Random().nextInt(labeler.numberOfLabels()) + 1, actions[new Random().nextInt(3)]);
                 }
                 addSpecies(0.0, s);
                 result.add(s);
@@ -528,6 +569,7 @@ public class NEATAgent implements Agent, Evolvable  {
         }
         Classifier(Predicate<Byte>... classifications) {
             this.classificationFilter = new ArrayList<>();
+            this.classificationFilter.add(data -> data != 0);
             for(Predicate<Byte> classification : classifications) this.addClassification(classification);
         }
 
@@ -554,14 +596,17 @@ public class NEATAgent implements Agent, Evolvable  {
         private ArrayList<Predicate<Byte>> classificationFilter;
     }
 
-    public NEATAgent() {
-        this("GoOD ENuFF Agent");
-    }
-    public NEATAgent(String s) {
-        this.setName(s);
-        this.population = new Population( species -> 1.0, new Classifier() );
+//    public NEATAgent() {
+//        this("GoOD ENuFF Agent");
+//    }
+    public NEATAgent(EvaluationOptions eval) {
+        this.setName("GoOD ENuFF Agent");
+        this.evaluator = new Evaluator(eval);
+        //System.out.println(evaluator.evaluationInfo.agentName);
+        this.population = new Population( species -> fitness(evaluator.evaluationInfo), new Classifier() );
         this.action = new boolean[Environment.numberOfButtons];
         this.population.randomGenSpecies(10, 20);
+        this.fitest = 0.0;
         this.reset();
     }
     public NEATAgent(NEATAgent o) {
@@ -584,22 +629,10 @@ public class NEATAgent implements Agent, Evolvable  {
 
     @Override
     public void mutate() {
+        population.nextGen();
     }
 
-    @Override
-    public Evolvable getNewInstance() {
-        return null;
-    }
 
-    @Override
-    public Evolvable copy() {
-        return null;
-    }
-
-    @Override
-    public void mutate() {
-
-    }
 
     public void reset() {
         action = new boolean[Environment.numberOfButtons];
@@ -607,6 +640,8 @@ public class NEATAgent implements Agent, Evolvable  {
 
     public boolean[] getAction(Environment observation) {
         Population.Species currentSpecies = population.atRank(1).getValue();
+        fitest = new Random().nextDouble();
+//        currentSpecies.print();
         reset();
         //Terrain Info Generalization level 1, Enemy Info Generalization level 0
         byte data[][] = observation.getMergedObservationZ(1, 0);
@@ -617,7 +652,7 @@ public class NEATAgent implements Agent, Evolvable  {
                 Set<Integer> responses = currentSpecies.getResponse(x, y, population.labeler.classify(data[y][x]));
 
 //                System.out.printf("%d ", data[y][x]);
-                System.out.printf("(%d, %d):\t%d\t", x, y, population.labeler.classify(data[y][x]));
+//                System.out.printf("(%d, %d):\t%d\t", x, y, population.labeler.classify(data[y][x]));
 
                 if(responses != null) {
                     for (Integer r : responses) {
@@ -625,17 +660,17 @@ public class NEATAgent implements Agent, Evolvable  {
                     }
                 }
             }
-            System.out.println();
+//            System.out.println();
         }
-        System.out.println();
-        System.out.println();
+//        System.out.println();
+//        System.out.println();
 
 
         //action[Mario.KEY_RIGHT] = true;
         //action[Mario.KEY_SPEED] = true;
         action[Mario.KEY_JUMP] = action[Mario.KEY_JUMP] && observation.mayMarioJump() || !observation.isMarioOnGround();
-        System.out.println();
-        System.out.println();
+//        System.out.println();
+//        System.out.println();
         return action;
     }
 
@@ -648,7 +683,15 @@ public class NEATAgent implements Agent, Evolvable  {
         return name;
     }
 
+    public double getBestFitness() { return population.atRank(1).getKey();}
+
     public void setName(String Name) {
         this.name = Name;
+    }
+
+    public void setEvaluator(Evaluator evaluator) { this.evaluator = evaluator; }
+
+    public double fitness(EvaluationInfo marioInfo) {
+        return (marioInfo.marioStatus == 0) ? marioInfo.lengthOfLevelPassedPhys - abs(marioInfo.timeLeft-marioInfo.timeSpentOnLevel) : marioInfo.totalLengthOfLevelPhys - (marioInfo.timeSpentOnLevel-marioInfo.timeLeft);
     }
 }

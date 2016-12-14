@@ -7,8 +7,10 @@ import ch.idsia.ai.agents.ai.SimpleMLPAgent;
 import ch.idsia.ai.ea.ES;
 import ch.idsia.ai.tasks.ProgressTask;
 import ch.idsia.ai.tasks.Task;
+import ch.idsia.ai.tasks.ProgressTask;
 import ch.idsia.tools.CmdLineOptions;
 import ch.idsia.tools.EvaluationOptions;
+import ch.idsia.tools.Evaluator;
 import wox.serial.Easy;
 
 import java.text.DecimalFormat;
@@ -24,7 +26,7 @@ import java.util.List;
 public class Evolve {
 
     final static int generations = 100;
-    final static int populationSize = 100;
+    //final static int populationSize = 100;
 
 
     public static void main(String[] args) {
@@ -33,10 +35,12 @@ public class Evolve {
         options.setPauseWorld(true);
         List<Agent> bestAgents = new ArrayList<Agent>();
         DecimalFormat df = new DecimalFormat("0000");
+        NEATAgent goodEnough;
+        ProgressTask pT;
         for (int difficulty = 0; difficulty < 11; difficulty++)
         {
             System.out.println("New Evolve phase with difficulty = " + difficulty + " started.");
-            Evolvable initial = new NEATAgent();
+            Evolvable initial = goodEnough = new NEATAgent(options);
 
             options.setLevelDifficulty(difficulty);
             options.setAgent((Agent)initial);
@@ -44,18 +48,33 @@ public class Evolve {
             options.setMaxFPS(true);
             options.setVisualization(false);
 
-            Task task = new ProgressTask(options);
-            ES es = new ES (task, initial, populationSize);
-            
+            Task task = pT = new ProgressTask(options);
+            System.out.println(task.evaluate((Agent) initial)[0]);
+            goodEnough.setEvaluator(pT.evaluator);
+            initial = goodEnough;
+            goodEnough = (NEATAgent) initial;
+            Evaluator evaluator = new Evaluator(options);
+            goodEnough.setEvaluator(evaluator);
+
+            //ES es = new ES (task, initial, populationSize);
+
 
             for (int gen = 0; gen < generations; gen++) {
                 //es.nextGeneration();//    FIX
-                double bestResult = es.getBestFitnesses()[0];
+                //advance to next generation // mutate population
+                if (gen % 5 == 0) {
+                    goodEnough.population.nextGen();
+                }
+
+                double bestResult = goodEnough.getBestFitness();
+                System.out.println(bestResult);
 //                LOGGER.println("Generation " + gen + " best " + bestResult, LOGGER.VERBOSE_MODE.INFO);
                 System.out.println("Generation " + gen + " best " + bestResult);
-                options.setVisualization(gen % 5 == 0 || bestResult > 4000);
+                //options.setVisualization(gen % 5 == 0 || bestResult > 4000);
+                options.setNumberOfTrials(generations);
+                options.setVisualization(true);
                 options.setMaxFPS(true);
-                Agent a = new NEATAgent();
+                Agent a = new NEATAgent(options);
                 a.setName(((Agent)initial).getName() + df.format(gen));
 //                AgentsPool.setCurrentAgent(a);
                 bestAgents.add(a);
@@ -63,7 +82,7 @@ public class Evolve {
 //                LOGGER.println("trying: " + result, LOGGER.VERBOSE_MODE.INFO);
                 options.setVisualization(false);
                 options.setMaxFPS(true);
-                Easy.save (es.getBests()[0], "evolved.xml");
+                Easy.save (goodEnough.getBestFitness(), "evolved.xml");
                 if (result > 4000)
                     break; // Go to next difficulty.
             }
